@@ -12,11 +12,25 @@
     type: {{cards.type}} <br>
     code:{{cards.rgba}} <br>
     hex:{{cards.hex}}
-    <p><button>
-        <a href="/cards/{{index+1}}">
-          Next Card
-        </a>
+    <p>
+        <a href="{{ url_for('welcome') }}">HOME</a>
+
+
+        <button>
+        {% if index < max_index %}
+           <a href="{{ url_for('cards_view', index=index+1)}}">
+               NEXT CARD
+           </a>
+        {% else %}
+            <a href="{{ url_for('cards_view', index=0)}}">
+                START OVER
+            </a>
+        {% endif %}
+
     </button>
-    </p>
+           </p>
+            <a href="{{ url_for('remove_cards', index=index)}}">remove</a>
+
+
 </body>
 </html>
